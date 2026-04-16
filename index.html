@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decreto 0369 de 2026 — Inversión AFP en el Exterior</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E2C06B;
+    --gold-dim: #8A6A20;
+    --gold-glow: rgba(201,168,76,0.18);
+    --dark: #0B0C0F;
+    --dark2: #111318;
+    --dark3: #181A21;
+    --dark4: #1E2028;
+    --dark5: #23262F;
+    --text: #E8E0CC;
+    --text-dim: #9B9080;
+    --text-muted: #5A5448;
+    --danger: #C0392B;
+    --danger-glow: rgba(192,57,43,0.2);
+    --success: #2ECC71;
+    --warn: #F39C12;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      linear-gradient(180deg, #0B0C0F 0%, #0F1016 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.4);
+    color: #E74C3C;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #E74C3C;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero-decree {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 0.7s ease 0.1s both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    animation: fadeDown 0.8s ease 0.2s both;
+  }
+
+  .hero-title span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin: 1.5rem 0 2.5rem;
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 0.9s ease 0.3s both;
+    font-style: italic;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 1s ease 0.4s both;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+  }
+
+  .hero-meta-item .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .hero-meta-item .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 50px;
+    background: var(--dark5);
+    align-self: center;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    z-index: 1;
+    opacity: 0.4;
+    animation: fadeDown 1.2s ease 0.8s both;
+  }
+
+  .scroll-hint span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .scroll-arrow {
+    width: 20px; height: 20px;
+    border-right: 1px solid var(--text-muted);
+    border-bottom: 1px solid var(--text-muted);
+    transform: rotate(45deg);
+    animation: bounce 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(5px); }
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SECTION */
+  section {
+    padding: 5rem 0;
+    position: relative;
+  }
+
+  section + section {
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    height: 1px;
+    width: 40px;
+    background: var(--gold-dim);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+
+  /* ALERT BOX */
+  .alert-box {
+    background: rgba(192,57,43,0.08);
+    border: 1px solid rgba(192,57,43,0.3);
+    border-left: 3px solid var(--danger);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 2rem;
+  }
+
+  .alert-box .alert-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #E74C3C;
+    margin-bottom: 0.4rem;
+  }
+
+  .alert-box p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+  }
+
+  /* CARD GRID */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .card {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    padding: 1.8rem;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1);
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .card p {
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), rgba(201,168,76,0.1));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.35rem;
+    width: 14px; height: 14px;
+    background: var(--dark);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-dot::after {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-body {
+    font-size: 0.92rem;
+    color: var(--text-dim);
+  }
+
+  /* BIG STAT */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 2.5rem 0;
+  }
+
+  .stat-cell {
+    background: var(--dark3);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .stat-cell:hover { background: var(--dark4); }
+
+  .stat-cell .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-cell .num.gold { color: var(--gold); }
+  .stat-cell .num.red { color: #E74C3C; }
+  .stat-cell .num.green { color: var(--success); }
+
+  .stat-cell .desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* TRANSITION BAR */
+  .transition-visual {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .bar-label span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .bar-label .pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .bar-track {
+    height: 10px;
+    background: var(--dark5);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bar-fill.red {
+    background: linear-gradient(90deg, #C0392B, #E74C3C);
+  }
+
+  .bar-fill.animated { width: var(--target-width); }
+
+  /* LEGAL QUOTE */
+  .legal-quote {
+    background: var(--dark3);
+    border-left: 3px solid var(--gold);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .legal-quote::before {
+    content: '§';
+    position: absolute;
+    top: -0.8rem;
+    left: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    background: var(--dark3);
+    padding: 0 0.5rem;
+  }
+
+  .legal-quote blockquote {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .legal-quote cite {
+    display: block;
+    margin-top: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  /* FAQ ACCORDION */
+  .faq-list { margin-top: 2rem; }
+
+  .faq-item {
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .faq-item.open {
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: var(--dark3);
+    border: none;
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.3s;
+  }
+
+  .faq-item.open .faq-question { background: var(--dark4); }
+
+  .faq-question:hover { background: var(--dark4); }
+
+  .faq-q-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .faq-chevron {
+    width: 18px; height: 18px;
+    border-right: 2px solid var(--gold-dim);
+    border-bottom: 2px solid var(--gold-dim);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .faq-item.open .faq-chevron {
+    transform: rotate(-135deg);
+    border-color: var(--gold);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: var(--dark2);
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 400px;
+  }
+
+  .faq-answer-inner {
+    padding: 1.2rem 1.5rem 1.5rem;
+    font-size: 0.93rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+  }
+
+  /* TAG PILLS */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+
+  .tag-gold { color: var(--gold); border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.06); }
+  .tag-red { color: #E74C3C; border-color: rgba(231,76,60,0.3); background: rgba(231,76,60,0.06); }
+  .tag-green { color: var(--success); border-color: rgba(46,204,113,0.3); background: rgba(46,204,113,0.06); }
+  .tag-blue { color: #5DADE2; border-color: rgba(93,173,226,0.3); background: rgba(93,173,226,0.06); }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+  }
+
+  .data-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    background: var(--dark3);
+  }
+
+  .data-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.05);
+    color: var(--text-dim);
+    vertical-align: top;
+  }
+
+  .data-table tr:hover td {
+    background: rgba(201,168,76,0.03);
+    color: var(--text);
+  }
+
+  .data-table td:first-child {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* CHAT AI */
+  .chat-section {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .chat-box {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 2rem auto 0;
+  }
+
+  .chat-header {
+    background: var(--dark4);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .chat-avatar {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .chat-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .chat-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--success);
+  }
+
+  .chat-messages {
+    padding: 1.5rem;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: var(--dark3); }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--dark5); border-radius: 2px; }
+
+  .msg {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .msg.user { flex-direction: row-reverse; }
+
+  .msg-bubble {
+    background: var(--dark4);
+    border: 1px solid rgba(201,168,76,0.08);
+    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    max-width: 80%;
+    line-height: 1.65;
+  }
+
+  .msg.user .msg-bubble {
+    background: rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.2);
+    color: var(--text);
+  }
+
+  .msg-av {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    background: var(--dark5);
+  }
+
+  .msg-av.ai {
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  }
+
+  .typing {
+    display: flex;
+    gap: 4px;
+    padding: 0.5rem 0;
+    align-items: center;
+  }
+
+  .typing span {
+    width: 6px; height: 6px;
+    background: var(--gold-dim);
+    border-radius: 50%;
+    animation: typingDot 1.2s infinite;
+  }
+
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typingDot {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+  .chat-input-row {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(201,168,76,0.08);
+    background: var(--dark4);
+  }
+
+  .chat-input {
+    flex: 1;
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .chat-input:focus { border-color: rgba(201,168,76,0.4); }
+  .chat-input::placeholder { color: var(--text-muted); font-style: italic; }
+
+  .chat-send {
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+    border: none;
+    border-radius: 4px;
+    width: 42px; height: 42px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.2s;
+    color: var(--dark);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .chat-send:hover { opacity: 0.85; transform: scale(1.05); }
+  .chat-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .footer-decree {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .footer-brand a {
+    color: var(--gold-dim);
+    text-decoration: none;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11,12,15,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    padding: 0.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero-meta { gap: 1rem; }
+    .hero-divider { display: none; }
+    nav { padding: 0.8rem 1rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.2rem; }
+    section { padding: 3rem 0; }
+    .data-table { font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Decreto 0369 · 2026</div>
+  <ul class="nav-links">
+    <li><a href="#contexto">Contexto</a></li>
+    <li><a href="#norma">La Norma</a></li>
+    <li><a href="#transicion">Transición</a></li>
+    <li><a href="#debate">Debate</a></li>
+    <li><a href="#faq">Preguntas</a></li>
+    <li><a href="#chat">Consultar IA</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-badge">⚡ Norma vigente — Expedida el 7 de abril de 2026</div>
+  <div class="hero-decree">Decreto 0369 de 2026 · Ministerio de Hacienda</div>
+
+  <h1 class="hero-title">
+    Límites a la Inversión de<br>
+    <span>Fondos de Pensiones</span><br>
+    en el Exterior
+  </h1>
+
+  <p class="hero-subtitle">
+    El Gobierno Petro restringe la inversión de las AFP en mercados internacionales. Un tope del 30% con transición de 5 años que reconfigura el ahorro pensional de 19 millones de colombianos.
+  </p>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="val">30%</span>
+      <span class="lbl">Tope máximo exterior</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="val">5</span>
+      <span class="lbl">Años de transición</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="val">$125B</span>
+      <span class="lbl">Billones en juego</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="val">19M</span>
+      <span class="lbl">Afiliados afectados</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Explorar</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- CONTEXTO -->
+<section id="contexto">
+  <div class="container">
+    <div class="section-label reveal">01 — Contexto</div>
+    <h2 class="section-title reveal">¿Cómo <em>invertían</em> las AFP antes?</h2>
+    <p class="section-lead reveal">Antes del Decreto 0369 de 2026, las Administradoras de Fondos de Pensiones no tenían ningún techo para sus inversiones en el exterior.</p>
+
+    <div class="stat-row reveal">
+      <div class="stat-cell">
+        <span class="num gold">48-50%</span>
+        <span class="desc">del portafolio AFP en exterior (antes)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="num gold">US$170B+</span>
+        <span class="desc">dólares administrados por AFP privadas</span>
+      </div>
+      <div class="stat-cell">
+        <span class="num red">8%</span>
+        <span class="desc">tasa de ahorro nacional (PIB — 3T 2025)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="num gold">19.7%</span>
+        <span class="desc">tasa de inversión nacional (PIB — 3T 2025)</span>
+      </div>
+    </div>
+
+    <div class="card-grid reveal">
+      <div class="card">
+        <span class="card-icon">🌍</span>
+        <div class="card-title">¿Por qué invertir afuera?</div>
+        <p>Las AFP diversificaban en mercados internacionales para acceder a sectores como tecnología y biotecnología, protegerse de la volatilidad del peso colombiano y obtener mejores rentabilidades en economías más estables.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📉</span>
+        <div class="card-title">La brecha de ahorro</div>
+        <p>Colombia financia buena parte de su inversión con ahorro externo. El Gobierno argumenta que redirigir estos flujos al mercado local cerraría la brecha entre inversión (19.7% del PIB) y ahorro nacional (8% del PIB).</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚖️</span>
+        <div class="card-title">Marco previo: Decreto 2555/2010</div>
+        <p>El régimen de inversión de las AFP estaba regulado por el Decreto 2555 de 2010. El Decreto 0369 de 2026 modifica específicamente ese marco para imponer el tope del 30% a inversiones en el exterior.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA NORMA -->
+<section id="norma">
+  <div class="container">
+    <div class="section-label reveal">02 — La Norma</div>
+    <h2 class="section-title reveal">Decreto 0369 de <em>2026</em></h2>
+    <p class="section-lead reveal">Expedido el 7 de abril de 2026 por el Ministerio de Hacienda bajo el gobierno del presidente Gustavo Petro.</p>
+
+    <div class="alert-box reveal">
+      <div class="alert-title">⚠ Estado jurídico — Demandado ante el Consejo de Estado</div>
+      <p>La Fundación para el Estado de Derecho (Fede Colombia) presentó demanda de nulidad el 11 de abril de 2026. Se solicitó suspensión provisional. El decreto sigue vigente mientras se decide.</p>
+    </div>
+
+    <div class="legal-quote reveal">
+      <blockquote>
+        "Límite global de inversión en el exterior aplicable a la suma de los cuatro tipos de fondos de pensiones obligatorias… Los cuatro tipos de fondos de pensiones obligatorias de ahorro individual con solidaridad no podrán tener más de un 30% del total de los fondos en inversiones fuera del país."
+      </blockquote>
+      <cite>— Decreto 0369 de 2026, Art. principal de restricción (Modifica Decreto 2555 de 2010)</cite>
+    </div>
+
+    <h3 class="section-title reveal" style="font-size:1.5rem; margin-bottom:1rem;">Aspectos clave de la norma</h3>
+
+    <table class="data-table reveal">
+      <thead>
+        <tr>
+          <th>Aspecto</th>
+          <th>Contenido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sujetos obligados</td>
+          <td>Las cuatro AFP del Régimen de Ahorro Individual con Solidaridad (RAIS): Colfondos, Porvenir, Protección y Skandia.</td>
+        </tr>
+        <tr>
+          <td>Tope máximo definitivo</td>
+          <td>30% del total de los fondos administrados en inversiones fuera de Colombia.</td>
+        </tr>
+        <tr>
+          <td>Período de transición</td>
+          <td>Hasta 5 años. En los primeros 3 años, reducción al 35%. Al año 5, alcanzar el 30%.</td>
+        </tr>
+        <tr>
+          <td>Nuevas cotizaciones</td>
+          <td>Los nuevos aportes deben invertirse prioritariamente en Colombia desde la entrada en vigor.</td>
+        </tr>
+        <tr>
+          <td>Excepción técnica</td>
+          <td>Si existen razones objetivas que impidan cumplir el límite en condiciones de seguridad, rentabilidad y liquidez, las AFP presentan un documento técnico a la Superfinanciera.</td>
+        </tr>
+        <tr>
+          <td>Activos permitidos en exterior (excepción)</td>
+          <td>ETF (fondos de índices), fondos mutuos, acciones de emisores extranjeros y títulos de deuda (bonos).</td>
+        </tr>
+        <tr>
+          <td>Norma modificada</td>
+          <td>Decreto 2555 de 2010 (régimen de inversiones del sistema financiero colombiano).</td>
+        </tr>
+        <tr>
+          <td>Objetivo declarado</td>
+          <td>Redirigir recursos hacia proyectos productivos nacionales con alto multiplicador económico: infraestructura, construcción, PTMI (Plan Maestro de Transporte Intermodal).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tag-row reveal">
+      <span class="tag tag-gold">Derecho Financiero</span>
+      <span class="tag tag-gold">Pensiones</span>
+      <span class="tag tag-red">Controversia constitucional</span>
+      <span class="tag tag-blue">Art. 48 Constitución</span>
+      <span class="tag tag-blue">Art. 100 Ley 100/1993</span>
+      <span class="tag tag-green">RAIS</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSICIÓN -->
+<section id="transicion">
+  <div class="container">
+    <div class="section-label reveal">03 — Transición</div>
+    <h2 class="section-title reveal">Hoja de ruta de <em>adaptación</em></h2>
+    <p class="section-lead reveal">Las AFP tienen un período gradual para ajustar sus portafolios sin vender activos de forma apresurada.</p>
+
+    <div class="transition-visual reveal" id="barSection">
+      <div class="bar-label">
+        <span>Situación actual (antes del decreto)</span>
+        <span class="pct">~49%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill red" style="--target-width: 49%;"></div>
+      </div>
+
+      <div class="bar-label">
+        <span>Meta año 3 (umbral intermedio)</span>
+        <span class="pct">35%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="--target-width: 35%;"></div>
+      </div>
+
+      <div class="bar-label">
+        <span>Meta año 5 (tope definitivo)</span>
+        <span class="pct">30%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="--target-width: 30%;"></div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">7 de abril · 2026</div>
+        <div class="timeline-title">Expedición del Decreto 0369</div>
+        <div class="timeline-body">El Ministerio de Hacienda publica el decreto en el Diario Oficial. Las nuevas cotizaciones de los afiliados comienzan a invertirse prioritariamente en Colombia.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">11 de abril · 2026</div>
+        <div class="timeline-title">Demanda ante el Consejo de Estado</div>
+        <div class="timeline-body">Fede Colombia interpone demanda de nulidad y solicitud de suspensión provisional, argumentando vulneración de los artículos 48 y 58 de la Constitución y el artículo 100 de la Ley 100 de 1993.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Año 3 · ~2029</div>
+        <div class="timeline-title">Primer umbral: reducir al 35%</div>
+        <div class="timeline-body">Las AFP deben haber ajustado su exposición internacional hasta un máximo del 35% del portafolio total. Aquellas que no puedan cumplir por razones técnicas, deben notificar a la Superfinanciera.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Año 5 · ~2031</div>
+        <div class="timeline-title">Tope definitivo: 30%</div>
+        <div class="timeline-body">Las AFP consolidan el portafolio con máximo 30% en activos del exterior. El 70% restante debe estar en inversiones colombianas: bonos soberanos, deuda local, infraestructura, entre otros.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEBATE -->
+<section id="debate">
+  <div class="container">
+    <div class="section-label reveal">04 — Debate</div>
+    <h2 class="section-title reveal">Argumentos <em>a favor</em> y en contra</h2>
+    <p class="section-lead reveal">La norma divide a economistas, gremios y juristas. Estos son los principales argumentos en ambos frentes.</p>
+
+    <div class="card-grid reveal">
+      <div class="card" style="border-color: rgba(46,204,113,0.15);">
+        <span class="card-icon">✅</span>
+        <div class="card-title" style="color: var(--success);">Argumentos del Gobierno</div>
+        <p>• Cerrar la brecha entre ahorro nacional (8% PIB) e inversión (19.7% PIB).<br><br>
+        • Financiar proyectos estratégicos: PTMI (infraestructura por $115.5 billones).<br><br>
+        • Reducir la dependencia del ahorro externo para financiar la economía.<br><br>
+        • Generar mayor crecimiento económico interno a largo plazo.</p>
+      </div>
+      <div class="card" style="border-color: rgba(231,76,60,0.15);">
+        <span class="card-icon">❌</span>
+        <div class="card-title" style="color: #E74C3C;">Argumentos de Asofondos y expertos</div>
+        <p>• Venta forzada de activos rentables en el exterior a precios desfavorables.<br><br>
+        • Repatriación masiva de dólares presionaría una revaluación del peso.<br><br>
+        • El mercado local no tiene capacidad de absorber ~$125 billones.<br><br>
+        • Afecta la rentabilidad y diversificación del ahorro de 19 millones de trabajadores.</p>
+      </div>
+    </div>
+
+    <div class="alert-box reveal" style="margin-top:2rem; background: rgba(93,173,226,0.06); border-color: rgba(93,173,226,0.3); border-left-color: #5DADE2;">
+      <div class="alert-title" style="color:#5DADE2;">⚡ Efecto cambiario ya registrado</div>
+      <p>Solo el anuncio del proyecto en octubre de 2025 hizo caer el dólar 25 pesos en un día, mientras las demás monedas de la región se depreciaban. Esto ilustra el impacto potencial de la repatriación sobre la tasa de cambio.</p>
+    </div>
+
+    <div class="legal-quote reveal">
+      <blockquote>
+        "El ahorro pensional existe para garantizar los ingresos durante la vejez de los ciudadanos, no para suplir las necesidades de inversión del Gobierno."
+      </blockquote>
+      <cite>— Andrés Caro, Director de Fede Colombia, demanda de nulidad Decreto 0369/2026</cite>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label reveal">05 — Preguntas Frecuentes</div>
+    <h2 class="section-title reveal">¿Qué debo <em>saber</em>?</h2>
+
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">¿Qué es una AFP y cómo me afecta este decreto?</span>
+          <div class="faq-chevron"></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Una AFP (Administradora de Fondos de Pensiones) es la entidad que gestiona tus aportes mensuales para la pensión de vejez en el Régimen de Ahorro Individual (RAIS). Las cuatro AFP en Colombia son Colfondos, Porvenir, Protección y Skandia. Si eres cotizante al RAIS, este decreto afecta directamente cómo se invierten tus ahorros, cambiando el balance entre activos internacionales y nacionales.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">¿Mis ahorros pensionales están en riesgo por este decreto?</span>
+          <div class="faq-chevron"></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No de forma inmediata. El decreto no ordena la liquidación masiva de activos ni cambia la titularidad de tus ahorros. El debate es sobre rentabilidad futura: los críticos argumentan que restringir inversiones internacionales puede reducir los rendimientos del portafolio a largo plazo, lo que podría traducirse en menores pensiones. El Gobierno sostiene que invertir en Colombia generará crecimiento que compensará ese efecto.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">¿El decreto viola la Constitución colombiana?</span>
+          <div class="faq-chevron"></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Esa es precisamente la discusión jurídica activa. Fede Colombia argumenta que el decreto vulnera: el artículo 48 (los recursos de seguridad social no pueden destinarse a fines distintos a garantizar pensiones), el artículo 58 (derecho de propiedad de los afiliados) y el artículo 100 de la Ley 100 de 1993 (criterios técnicos de inversión). El Consejo de Estado debe pronunciarse. El Gobierno defiende su legalidad como política económica legítima del Ejecutivo.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">¿Cuánto dinero está en juego con esta medida?</span>
+          <div class="faq-chevron"></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Aproximadamente $125 billones de pesos colombianos (cercano a US$30.000 millones) están actualmente invertidos en el exterior y deberían repatriarse progresivamente. En total, las AFP privadas administran más de US$170.000 millones. Actualmente, cerca del 48-50% de ese portafolio está en activos extranjeros; el decreto lo reduciría al 30% en 5 años.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">¿Qué norma modifica el Decreto 0369 de 2026?</span>
+          <div class="faq-chevron"></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Modifica el Decreto 2555 de 2010, que es el estatuto integrado que regula el sistema financiero, asegurador y del mercado de valores en Colombia. Específicamente, ajusta el régimen de límites de inversión para las AFP en activos del exterior, introduciendo el tope del 30% donde antes no existía ningún límite máximo global.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">¿Puede una AFP superar el tope del 30%?</span>
+          <div class="faq-chevron"></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sí, de forma temporal y bajo justificación técnica. Si existen razones objetivas que impidan cumplir el límite en condiciones de seguridad, rentabilidad y liquidez, la AFP debe preparar un documento técnico y presentarlo a la Superintendencia Financiera de Colombia (SFC). Si la SFC aprueba esas razones, la AFP puede mantener temporalmente exposición superior al límite en activos como ETF, fondos mutuos, acciones y bonos extranjeros.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT IA -->
+<section id="chat" class="chat-section">
+  <div class="container">
+    <div class="section-label reveal">06 — Asistente Jurídico IA</div>
+    <h2 class="section-title reveal">Consulta sobre el <em>Decreto 0369</em></h2>
+    <p class="section-lead reveal">Pregúntale al asistente jurídico sobre esta norma, sus implicaciones y el debate constitucional.</p>
+
+    <div class="chat-box reveal">
+      <div class="chat-header">
+        <div class="chat-avatar">⚖️</div>
+        <div>
+          <div class="chat-name">Asistente Jurídico · Decreto 0369/2026</div>
+          <div class="chat-status">● En línea</div>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg ai">
+          <div class="msg-av ai">⚖️</div>
+          <div class="msg-bubble">
+            Hola. Soy tu asistente jurídico especializado en el <strong>Decreto 0369 de 2026</strong> sobre inversión de fondos de pensiones en el exterior. Puedes preguntarme sobre sus disposiciones, implicaciones legales, el período de transición o el debate constitucional actual.
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input-row">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu consulta sobre el Decreto 0369..." onkeydown="handleKey(event)">
+        <button class="chat-send" id="sendBtn" onclick="sendMsg()">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-decree">Decreto 0369 de 2026 · Ministerio de Hacienda y Crédito Público · Colombia</div>
+  <div style="height:0.4rem"></div>
+  <div class="footer-brand">Desarrollada por <a href="#">Vibras Positivas HM</a> — Derechos de Autor Reservados · Colombia 2026</div>
+</footer>
+
+<script>
+  // INTERSECTION OBSERVER — Reveal animations
+  const revealEls = document.querySelectorAll('.reveal, .timeline-item');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => obs.observe(el));
+
+  // BAR ANIMATIONS
+  const barObs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.bar-fill').forEach(b => b.classList.add('animated'));
+      barObs.disconnect();
+    }
+  }, { threshold: 0.3 });
+  const barSection = document.getElementById('barSection');
+  if (barSection) barObs.observe(barSection);
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // CHAT
+  const SYSTEM_PROMPT = `Eres un asistente jurídico especializado en el Decreto 0369 de 2026 de Colombia, expedido por el Ministerio de Hacienda el 7 de abril de 2026. 
+
+Este decreto limita la inversión de las AFP (Administradoras de Fondos de Pensiones) en el exterior al 30% del portafolio total, con un período de transición de 5 años (35% en 3 años, 30% en 5 años). Modifica el Decreto 2555 de 2010.
+
+Contexto clave:
+- Las AFP administraban entre 48-50% en activos del exterior antes del decreto
+- Afecta a Colfondos, Porvenir, Protección y Skandia (RAIS)
+- Gestiona ahorros de aproximadamente 19 millones de trabajadores colombianos  
+- ~$125 billones de pesos deben repatriarse progresivamente
+- Ha sido demandado ante el Consejo de Estado por Fede Colombia por presunta violación del artículo 48 y 58 de la Constitución y artículo 100 de la Ley 100 de 1993
+- Las AFP pueden superar temporalmente el límite si justifican técnicamente ante la Superfinanciera
+- Activos permitidos en exterior bajo excepción: ETF, fondos mutuos, acciones extranjeras, bonos
+- Objetivo del gobierno: cerrar brecha entre tasa de inversión (19.7% PIB) y ahorro nacional (8% PIB)
+
+Responde en español, de forma clara, jurídicamente precisa pero comprensible para ciudadanos. Sé conciso. Máximo 3-4 párrafos por respuesta.`;
+
+  const messages = [];
+
+  async function sendMsg() {
+    const input = document.getElementById('chatInput');
+    const btn = document.getElementById('sendBtn');
+    const text = input.value.trim();
+    if (!text) return;
+
+    appendMsg('user', text);
+    messages.push({ role: 'user', content: text });
+    input.value = '';
+    btn.disabled = true;
+
+    const typingId = appendTyping();
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: messages
+        })
+      });
+
+      const data = await res.json();
+      removeTyping(typingId);
+
+      const reply = data.content?.map(c => c.text || '').join('') || 'No se pudo obtener respuesta.';
+      appendMsg('ai', reply);
+      messages.push({ role: 'assistant', content: reply });
+    } catch(e) {
+      removeTyping(typingId);
+      appendMsg('ai', 'Error de conexión. Por favor intenta de nuevo.');
+    }
+
+    btn.disabled = false;
+    input.focus();
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter') sendMsg();
+  }
+
+  function appendMsg(role, text) {
+    const box = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.innerHTML = `
+      <div class="msg-av ${role === 'ai' ? 'ai' : ''}">${role === 'ai' ? '⚖️' : '👤'}</div>
+      <div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>
+    `;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+    return div;
+  }
+
+  function appendTyping() {
+    const box = document.getElementById('chatMessages');
+    const id = 'typing-' + Date.now();
+    const div = document.createElement('div');
+    div.className = 'msg ai';
+    div.id = id;
+    div.innerHTML = `
+      <div class="msg-av ai">⚖️</div>
+      <div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>
+    `;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+    return id;
+  }
+
+  function removeTyping(id) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  }
+</script>
+</body>
+</html>
